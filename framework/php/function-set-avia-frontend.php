@@ -63,6 +63,7 @@ if(!function_exists('avia_get_option'))
 	function avia_get_option($key = false, $default = "", $echo = false, $decode = true)
 	{
 		global $avia;
+		if( ! isset( $avia->options ) ) { if( $echo ) echo $default; return $default; }
 		$result = $avia->options;
 
 		if(is_array($key))
@@ -533,7 +534,7 @@ if(!function_exists('avia_image_by_id'))
 		$image_src = wp_get_attachment_image_src($thumbnail_id, $size);
 
 		//if output is set to url return the url now and stop executing, otherwise build the whole img string with attributes
-		if ($output == 'url') return $image_src[0];
+		if ($output == 'url') return is_array($image_src) ? $image_src[0] : false;
 
 		//get the saved image metadata:
 		$attachment = get_post($thumbnail_id);

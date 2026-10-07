@@ -130,7 +130,7 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 				$output .= "<div class='avia-form-element ".$element['class']."'>";
 				//$output .= self::{$element['type']}($element, $parent_class);
 				
-				$output .= call_user_func(array('self', $element['type']), $element, $parent_class);
+				$output .= call_user_func(array(__CLASS__, $element['type']), $element, $parent_class);
 				
 				if(!empty($element['fetchTMPL']))
 				{
@@ -146,7 +146,7 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 			else
 			{
 				//$output .= self::{$element['type']}($element, $parent_class);
-				$output .= call_user_func(array('self', $element['type']), $element, $parent_class);
+				$output .= call_user_func(array(__CLASS__, $element['type']), $element, $parent_class);
 			}
 			
 			if( $element['builder_active'] )
@@ -909,7 +909,7 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 			}
 			
 			//$output .= self::$element['data']['save_to']($element);
-			$output .= call_user_func(array('self', $element['data']['save_to']), $element);
+			$output .= call_user_func(array(__CLASS__, $element['data']['save_to']), $element);
 			
 			//fake img for multi_image element
 			if(isset($fetch))

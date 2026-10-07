@@ -1364,7 +1364,7 @@ if(!function_exists('avia_woo_active_class'))
 //helper function to build the query strings for the catalog ordering menu
 if(!function_exists('avia_woo_build_query_string'))
 {
-	function avia_woo_build_query_string($params = array(), $overwrite_key, $overwrite_value)
+	function avia_woo_build_query_string($params, $overwrite_key, $overwrite_value)
 	{
 		$params[$overwrite_key] = $overwrite_value;
 		$paged = (array_key_exists('product_count', $params)) ? 'paged=1&' : '';

@@ -825,7 +825,7 @@ function ls_import_online() {
 	// Check activation state on client side in
 	// case of receiving a "Not Activated" flag
 	if( $zip && $data = json_decode($zip) ) {
-		$this->check_activation_state();
+		$GLOBALS['LS_AutoUpdate']->check_activation_state();
 	}
 
 	// Save package

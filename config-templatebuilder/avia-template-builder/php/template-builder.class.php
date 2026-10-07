@@ -1394,7 +1394,7 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 			if(empty($a['order'])) $a['order'] = 10;
 			if(empty($b['order'])) $b['order'] = 10;
 			
-   			return $b['order'] >= $a['order'];
+   			return $b['order'] <=> $a['order'];
 		}
 
 		

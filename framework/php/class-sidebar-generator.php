@@ -19,6 +19,7 @@
  
 if( ! class_exists( 'avia_sidebar' ) )
 {
+	#[\AllowDynamicProperties]
 	class avia_sidebar
 	{
 	    var $paths     = array();

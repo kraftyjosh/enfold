@@ -25,6 +25,7 @@
 
 if( ! class_exists( 'avia_superobject' ) )
 {
+	#[\AllowDynamicProperties]
 	class avia_superobject
 	{
 	
@@ -129,6 +130,7 @@ if( ! class_exists( 'avia_superobject' ) )
 			
 			//saved option values		
 			$database_option = get_option($this->option_prefix);
+			if( ! is_array( $database_option ) ) $database_option = array();
 			
 			//create an array that tells us which parent pages hold which subpages
 			foreach($this->option_pages as $page)

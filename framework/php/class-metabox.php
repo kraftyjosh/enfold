@@ -25,6 +25,7 @@ if( !class_exists( 'avia_meta_box' ) )
 	 *  @package 	AviaFramework
 	 */
  
+	#[\AllowDynamicProperties]
 	class avia_meta_box
 	{
 		/**

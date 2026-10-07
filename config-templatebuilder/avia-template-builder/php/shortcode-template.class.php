@@ -8,6 +8,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 
 if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 
+	#[\AllowDynamicProperties]
 	abstract class aviaShortcodeTemplate
 	{
 		/**
@@ -157,7 +158,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 		 * @return array|false
 		 * @since 4.1.3
 		 */
-		public function get_popup_element_by_id( $element_id, array &$source = null )
+		public function get_popup_element_by_id( $element_id, ?array &$source = null )
 		{
 			if( empty( $source ) )
 			{
