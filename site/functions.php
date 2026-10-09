@@ -128,8 +128,6 @@ function twentytwelve_get_font_url() {
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_scripts_styles() {
-	global $wp_styles;
-
 	/*
 	 * Adds JavaScript to pages with the comment form to support
 	 * sites with threaded comments (when in use).
@@ -141,6 +139,18 @@ function twentytwelve_scripts_styles() {
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
 	wp_enqueue_script( 'twentytwelve-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
+
+	/*
+	 * FlexNav responsive menu. Declaring the jQuery dependency makes WordPress
+	 * load jQuery first; the theme used to rely on a plugin (e.g. an older
+	 * Slider Revolution) loading it, which newer versions no longer do.
+	 */
+	wp_enqueue_style( 'flexnav', get_template_directory_uri() . '/css/flexnav.css', array(), '1.0', 'screen, projection' );
+	wp_enqueue_script( 'flexnav', get_template_directory_uri() . '/js/jquery.flexnav.js', array( 'jquery' ), '1.0', true );
+	wp_add_inline_script( 'flexnav', 'jQuery(function($) {
+	$("ul#menu-top-main-menu").attr("data-breakpoint", 800);
+	$(".flexnav").flexNav();
+});' );
 
 	$font_url = twentytwelve_get_font_url();
 	if ( ! empty( $font_url ) )
@@ -155,7 +165,7 @@ function twentytwelve_scripts_styles() {
 	 * Loads the Internet Explorer specific stylesheet.
 	 */
 	wp_enqueue_style( 'twentytwelve-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentytwelve-style' ), '20121010' );
-	$wp_styles->add_data( 'twentytwelve-ie', 'conditional', 'lt IE 9' );
+	wp_style_add_data( 'twentytwelve-ie', 'conditional', 'lt IE 9' );
 }
 add_action( 'wp_enqueue_scripts', 'twentytwelve_scripts_styles' );
 

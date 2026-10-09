@@ -25,13 +25,6 @@
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.flexnav.js" type="text/javascript"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("ul#menu-top-main-menu").attr('data-breakpoint', 800);
-	$(".flexnav").flexNav();
-});
-</script>
 <?php wp_footer(); ?>
 
 <script>

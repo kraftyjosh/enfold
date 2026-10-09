@@ -5,7 +5,15 @@
 
 get_header(); ?>
 
-<div class="home-banner"><?php putRevSlider( "homeslider" ) ?></div>
+<div class="home-banner"><?php
+	// putRevSlider() is gone/deprecated in newer Slider Revolution and is a
+	// fatal error whenever the plugin is inactive, so go through the shortcode.
+	if ( shortcode_exists( 'rev_slider' ) ) {
+		echo do_shortcode( '[rev_slider alias="homeslider"]' );
+	} elseif ( function_exists( 'putRevSlider' ) ) {
+		putRevSlider( 'homeslider' );
+	}
+?></div>
 			
 <div class="content-area">
 
